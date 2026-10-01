@@ -1,0 +1,14 @@
+# SyncYomi eşitleme sunucusu
+# Başlatma:  docker compose up -d
+# Web arayüzü: http://SUNUCU-IP:8282  (hesap oluştur + API anahtarı üret)
+services:
+  syncyomi:
+    container_name: syncyomi
+    image: ghcr.io/syncyomi/syncyomi:latest
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Istanbul
+    volumes:
+      - ./data/config:/config
+    ports:
+      - 8282:8282
